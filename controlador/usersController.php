@@ -14,16 +14,16 @@ switch ($_POST['action']) {
     break;  
     
   case 'insert':
-    $apellido1  = $_POST['apellido1'];
-    $apellido2  = $_POST['apellido2'];
+    $apaterno  = $_POST['apaterno'];
+    $amaterno  = $_POST['amaterno'];
     $nombre    = $_POST['nombre'];
     $usuario   = $_POST['usuario'];
     $clave     = $_POST['clave'];
     $tipo      = $_POST['tipo'];
-    $estado    = $_POST['estado'];
+    $status    = $_POST['status'];
 
     $bo = new usuarioBo();
-    $r = $bo->registrarUsuarioBo($apellido1, $apellido2, $nombre, $usuario, $clave, $tipo, $estado);
+    $r = $bo->registrarUsuarioBo($apaterno, $amaterno, $nombre, $usuario, $clave, $tipo, $status);
     print $r;
     break; 
 
@@ -37,16 +37,16 @@ switch ($_POST['action']) {
 
     case 'savedata':
         $id        = $_POST['a']; 
-        $apellido1  = $_POST['b'];
-        $apellido2  = $_POST['c'];
+        $apaterno  = $_POST['b'];
+        $amaterno  = $_POST['c'];
         $nombre    = $_POST['d'];
         $usuario   = $_POST['j'];
         $clave     = $_POST['k'];
         $tipo      = $_POST['l'];
-        $estado    = $_POST['m'];
+        $status    = $_POST['m'];
 
         $bo = new usuarioBo();
-        $r = $bo->saveDataUsuarioBo($id, $apellido1, $apellido2, $nombre, $usuario, $clave, $tipo, $estado);
+        $r = $bo->saveDataUsuarioBo($id, $apaterno, $amaterno, $nombre, $usuario, $clave, $tipo, $status);
         print $r;
         break;
 

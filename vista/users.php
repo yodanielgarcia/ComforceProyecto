@@ -80,15 +80,15 @@ require_once "../controlador/sessionUserTypeAdmin.php";
                         <fieldset>
                             <div class="form-group">                            
                                 <div class="col-lg-4">
-                                    <div class="form-group" id="campoapellido1">
-                                        <label class="control-label" for="apellido1">Apellido paterno</label>
-                                        <input type="text" class="form-control" id="apellido1" name="apellido1" autofocus>
+                                    <div class="form-group" id="campoapaterno">
+                                        <label class="control-label" for="apaterno">Apellido paterno</label>
+                                        <input type="text" class="form-control" id="apaterno" name="apaterno" autofocus>
                                     </div>
                                 </div>
                                 <div class="col-lg-4">
-                                    <div class="form-group" id="campoapellido2">
-                                        <label class="control-label" for="apellido2">Apellido materno</label>
-                                        <input type="text" class="form-control" id="apellido2" name="apellido2">
+                                    <div class="form-group" id="campoamaterno">
+                                        <label class="control-label" for="amaterno">Apellido materno</label>
+                                        <input type="text" class="form-control" id="amaterno" name="amaterno">
                                     </div>
                                 </div>
                                 <div class="col-lg-4">
@@ -119,8 +119,8 @@ require_once "../controlador/sessionUserTypeAdmin.php";
                                     </div>
                                 </div> 
                                 <div class="col-lg-6">
-                                    <div class="form-group" id="campoestado">
-                                        <select class="form-control" id="estado" name="estado">
+                                    <div class="form-group" id="campoStatus">
+                                        <select class="form-control" id="status" name="status">
                                             <option value="1">Activo</option>
                                             <option value="0">Inactivo</option>
                                         </select>                                    

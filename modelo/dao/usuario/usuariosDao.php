@@ -63,12 +63,12 @@ class usuarioDao {
 
                 $row = mysqli_fetch_array($query); 
 
-                if ($row['estado'] != 0) 
+                if ($row['status'] != 0) 
                 {
 
                     session_start();
                     $_SESSION['idusuario']   = $row['idusuario']; 
-                    $_SESSION['nombre']      = $row['apellido1'].' '.$row['apellido2'].' '.$row['nombre']; 
+                    $_SESSION['nombre']      = $row['apaterno'].' '.$row['amaterno'].' '.$row['nombre']; 
                     $_SESSION['tipo']        = $row['tipo'];               
                     $result = "<script>window.location='main.php';</script>"; 
 
@@ -85,7 +85,7 @@ class usuarioDao {
         return $result;     
     }
 
-    function  registrarUsuarioDao($apellido1, $apellido2, $nombre, $usuario, $clave, $tipo, $estado){
+    function  registrarUsuarioDao($apaterno, $amaterno, $nombre, $usuario, $clave, $tipo, $status){
       $datosArray=array($usuario);
       $st=  procesaParametros::PrepareStatement(usuariosSql::validateIfExistsUser(),$datosArray);
 
@@ -93,8 +93,8 @@ class usuarioDao {
 
       if($query->num_rows==0)
       {
-        $st = "INSERT INTO usuarios(apellido1, apellido2, nombre, usuario, clave, tipo, estado, fecharegistro) 
-        VALUES('$apellido1', '$apellido2', '$nombre', '$usuario', '$clave', '$tipo', '$estado', NOW())";
+        $st = "INSERT INTO usuarios(apaterno, amaterno, nombre, usuario, clave, tipo, status, fRegistro) 
+        VALUES('$apaterno', '$amaterno', '$nombre', '$usuario', '$clave', '$tipo', '$status', NOW())";
 
         $query = $this->con->query($st); 
         $result = Notification::registeredRecord($query);
@@ -107,8 +107,8 @@ class usuarioDao {
       return $result;
     }
 
-    function saveDataUsuarioDao($id, $apellido1, $apellido2, $nombre, $usuario, $clave, $tipo, $estado) {
-      $st = "UPDATE usuarios SET apellido1='$apellido1', apellido2='$apellido2', nombre='$nombre', usuario='$usuario', clave='$clave', tipo='$tipo', estado='$estado' WHERE idUsuario = '$id'";
+    function saveDataUsuarioDao($id, $apaterno, $amaterno, $nombre, $usuario, $clave, $tipo, $status) {
+      $st = "UPDATE usuarios SET apaterno='$apaterno', amaterno='$amaterno', nombre='$nombre', usuario='$usuario', clave='$clave', tipo='$tipo', status='$status' WHERE idUsuario = '$id'";
       $query = $this->con->query($st); 
       $result = Notification::updatedRecord($query);
       return $result;
@@ -134,14 +134,14 @@ class usuarioDao {
         
         $data.='{
               "id":"'.$row['idusuario'].'",
-              "paterno":"'.$row['apellido1'].'",
-              "materno":"'.$row['apellido2'].'",
+              "paterno":"'.$row['apaterno'].'",
+              "materno":"'.$row['amaterno'].'",
               "nombre":"'.$row['nombre'].'",
               "usuario":"'.$row['usuario'].'",
               "clave":"'.$row['clave'].'",
               "tipo":"'.$row['tipo'].'",
-              "estado":"'.$row['estado'].'",
-              "fecha":"'.$row['fecharegistro'].'",
+              "status":"'.$row['status'].'",
+              "fecha":"'.$row['fregistro'].'",
               "acciones":"'.$editar.$eliminar.'"
             },';
     }
@@ -164,15 +164,15 @@ class usuarioDao {
                 <div class="form-group"> 
                     <input type="hidden" class="form-control" name="a" value="'.$row['idusuario'].'">                           
                     <div class="col-lg-4">
-                        <div class="form-group" id="campoapellido1">
-                            <label class="control-label" for="apellido1">Apellido paterno</label>
-                            <input type="text" class="form-control" id="apellido1" name="b" autofocus value="'.$row['apellido1'].'" required>
+                        <div class="form-group" id="campoapaterno">
+                            <label class="control-label" for="apaterno">Apellido paterno</label>
+                            <input type="text" class="form-control" id="apaterno" name="b" autofocus value="'.$row['apaterno'].'" required>
                         </div>
                     </div>
                     <div class="col-lg-4">
-                        <div class="form-group" id="campoapellido2">
-                            <label class="control-label" for="apellido2">Apellido materno</label>
-                            <input type="text" class="form-control" id="apellido2" name="c" value="'.$row['apellido2'].'" required>
+                        <div class="form-group" id="campoamaterno">
+                            <label class="control-label" for="amaterno">Apellido materno</label>
+                            <input type="text" class="form-control" id="amaterno" name="c" value="'.$row['amaterno'].'" required>
                         </div>
                     </div>
                     <div class="col-lg-4">
@@ -204,9 +204,9 @@ class usuarioDao {
                         </div>
                     </div> 
                     <div class="col-lg-6">
-                        <div class="form-group" id="campoestado">
-                            <select class="form-control" id="estado" name="m">
-                                <option selected value="'.$row['estado'].'">--Click para cambiar--</option>
+                        <div class="form-group" id="campoStatus">
+                            <select class="form-control" id="status" name="m">
+                                <option selected value="'.$row['status'].'">--Click para cambiar--</option>
                                 <option value="1">Activo</option>
                                 <option value="0">Inactivo</option>
                             </select>                                    

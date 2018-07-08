@@ -15,8 +15,8 @@ class usuarioBo {
         return $resultado;
     }
 
-    function registrarUsuarioBo($apellido1, $apellido2, $nombre, $usuario, $clave, $tipo, $estado) {
-        $resultado = $this->dao->registrarUsuarioDao($apellido1, $apellido2, $nombre, $usuario, $clave, $tipo, $estado);
+    function registrarUsuarioBo($apaterno, $amaterno, $nombre, $usuario, $clave, $tipo, $status) {
+        $resultado = $this->dao->registrarUsuarioDao($apaterno, $amaterno, $nombre, $usuario, $clave, $tipo, $status);
         return $resultado;
     }
 
@@ -30,8 +30,8 @@ class usuarioBo {
         return $resultado;
     }
 
-    function saveDataUsuarioBo($id, $apellido1, $apellido2, $nombre, $usuario, $clave, $tipo, $estado) {
-        $resultado = $this->dao->saveDataUsuarioDao($id, $apellido1, $apellido2, $nombre, $usuario, $clave, $tipo, $estado);
+    function saveDataUsuarioBo($id, $apaterno, $amaterno, $nombre, $usuario, $clave, $tipo, $status) {
+        $resultado = $this->dao->saveDataUsuarioDao($id, $apaterno, $amaterno, $nombre, $usuario, $clave, $tipo, $status);
         return $resultado;
     }
 

@@ -52,7 +52,17 @@ require_once "../controlador/sessionUserTypeAdmin.php";
                     <li>
                         <a  href="#"><i class="fa fa-qrcode fa-2x"></i> Tabs & Panels</a>
                     </li>
-                
+                    <li  >
+                        <a  href="#"><i class="fa fa-bar-chart-o fa-2x"></i> Morris Charts</a>
+                    </li>   
+                      <li  >
+                        <a  href="#"><i class="fa fa-table fa-2x"></i> Table Examples</a>
+                    </li>
+                    <li  >
+                        <a  href="#"><i class="fa fa-edit fa-2x"></i> Forms </a>
+                    </li>               
+                    
+                                       
                     <li>
                         <a href="#"><i class="fa fa-sitemap fa-2x"></i> Multi-Level Dropdown<span class="fa arrow"></span></a>
                         <ul class="nav nav-second-level">

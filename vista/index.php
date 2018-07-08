@@ -56,7 +56,7 @@ if (empty($_SESSION['tipo'])) {
                         </div>
                         <br>
                         <div class="col-lg-4 col-lg-offset-8">
-                            <div class="form-group" id="campoapellido1">
+                            <div class="form-group" id="campoapaterno">
                                  <button type="submit" class="btn btn-primaryL btn-block">Ingresar</button> 
                             </div>
                         </div>   
