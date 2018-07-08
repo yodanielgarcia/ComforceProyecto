@@ -169,5 +169,6 @@ require_once "../controlador/sessionUserTypeAdmin.php";
     <script src="assets/js/dataTables.bootstrap.min.js"></script>          
     <script src="assets/js/bootstrap.js"></script>
     <script src="assets/js/usuariojs.js"></script>
+    <script src="assets/js/procesos.js"></script>
 </body>
 </html>

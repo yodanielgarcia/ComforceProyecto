@@ -47,52 +47,11 @@ require_once "../controlador/sessionUserTypeAdmin.php";
                         <a  href="#" onclick="loadUsers()"><i class="fa fa-dashboard fa-2x" ></i> Modificacion y creacion de usuarios</a>
                     </li>
                       <li>
-                        <a  href="#"><i class="fa fa-desktop fa-2x"></i> Creacion de procesos</a>
+                        <a  href="#" onclick="loadprocess()"><i class="fa fa-desktop fa-2x"></i> Creacion de procesos</a>
                     </li>
                     <li>
                         <a  href="#"><i class="fa fa-qrcode fa-2x"></i> Tabs & Panels</a>
                     </li>
-                    <li  >
-                        <a  href="#"><i class="fa fa-bar-chart-o fa-2x"></i> Morris Charts</a>
-                    </li>   
-                      <li  >
-                        <a  href="#"><i class="fa fa-table fa-2x"></i> Table Examples</a>
-                    </li>
-                    <li  >
-                        <a  href="#"><i class="fa fa-edit fa-2x"></i> Forms </a>
-                    </li>               
-                    
-                                       
-                    <li>
-                        <a href="#"><i class="fa fa-sitemap fa-2x"></i> Multi-Level Dropdown<span class="fa arrow"></span></a>
-                        <ul class="nav nav-second-level">
-                            <li>
-                                <a href="#">Second Level Link</a>
-                            </li>
-                            <li>
-                                <a href="#">Second Level Link</a>
-                            </li>
-                            <li>
-                                <a href="#">Second Level Link<span class="fa arrow"></span></a>
-                                <ul class="nav nav-third-level">
-                                    <li>
-                                        <a href="#">Third Level Link</a>
-                                    </li>
-                                    <li>
-                                        <a href="#">Third Level Link</a>
-                                    </li>
-                                    <li>
-                                        <a href="#">Third Level Link</a>
-                                    </li>
-
-                                </ul>
-                               
-                            </li>
-                        </ul>
-                      </li>  
-                  <li  >
-                        <a class="active-menu"  href="blank.html"><i class="fa fa-square-o fa-2x"></i> Blank Page</a>
-                    </li>   
                 </ul>
                
             </div>
@@ -105,8 +64,8 @@ require_once "../controlador/sessionUserTypeAdmin.php";
                 <div id="page-inner">
                     <div class="row-fluid" id="contenido">
                         <div class="col-md-12">
-                         <h2>Blank Page</h2>   
-                         <h5>Welcome, Love to see you back. </h5>
+                         <h2>Bienvenido</h2>   
+                         <h5>Prueba tecnica Por Daniel Garcia</h5>
                          <!-- <object data="SG53-chatbots.pdf" type="application/pdf" width="100%" height="1050px">                           
                          </object> -->
                         </div>                   
