@@ -8,6 +8,12 @@ switch ($_GET['action']) {
 		$r = $bo->traeUsuariosBo();
 		print $r;
 		break;
+	
+	case "process":  
+		$bo = new usuarioBo();
+		$r = $bo->traeprocesosBo();
+		print $r;
+		break;
 }
           
 

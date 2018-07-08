@@ -25,6 +25,11 @@ class usuarioBo {
         return $resultado;
     }
 
+    function traeprocesosBo(){
+        $resultado = $this->dao->traeprocesosDao();
+        return $resultado;
+    }
+
     function actualizarUsuarioBo($usuario) {
         $resultado = $this->dao->actualizarUsuarioDao($usuario);
         return $resultado;

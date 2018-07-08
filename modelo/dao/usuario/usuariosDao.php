@@ -151,6 +151,32 @@ class usuarioDao {
         return $result;
     }
 
+    
+    function traeprocesosDao() {
+
+        $data = "";
+        $st = "SELECT * FROM procesos";
+        $query= $this->con->query($st); 
+  
+        while ($row =  mysqli_fetch_array($query) ) {
+        
+        $editar = '<a href=\"#\" data-toggle=\"modal\" data-target=\"#myModalActualiza\" id=\"'.$row['NumeroProceso'].'\" onclick=\"traeDatosUsuarioId(this)\" data-toggle=\"tooltip\" data-placement=\"top\" title=\"Editar\" class=\"btn btn-primary\"><i class=\"fa fa-pencil\" aria-hidden=\"true\"></i></a>';
+        $eliminar = '<a href=\"#\" data-toggle=\"tooltip\" data-placement=\"top\" title=\"Eliminar\" id=\"'.$row['NumeroProceso'].'\" onclick=\"delUsuario(this)\" class=\"btn btn-danger\"><i class=\"fa fa-trash\" aria-hidden=\"true\"></i></a>';
+          
+          $data.='{
+                "id":"'.$row['NumeroProceso'].'",
+                "paterno":"'.$row['Descripcion'].'",
+                "materno":"'.$row['fcreacion'].'",
+                "nombre":"'.$row['sede'].'",
+                "usuario":"'.$row['presupuesto'].'"
+              },';
+      }
+          $data = substr($data,0, strlen($data) - 1);
+          $result =  '{"data":['.$data.']}';
+  
+          return $result;
+      }
+
     function actualizarUsuarioDao($usuario) {
       $cad = "";
       $st = "SELECT * FROM usuarios WHERE usuario = '$usuario'";
