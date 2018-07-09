@@ -5,22 +5,6 @@ CREATE DATABASE IF NOT EXISTS comforceproyecto;
 USE comforceproyecto;
 -- --------------------------------------------------------
 
---
--- Table structure for table `procesos`
---
-
-CREATE TABLE `procesos` (
-  `NumeroProceso` int(11)  auto_increment  NOT NULL,
-  `Descripcion` varchar(200) NOT NULL,
-  `fcreacion` date NOT NULL,
-  `sede` int(11) NOT NULL,
-  `presupuesto` int(11) NOT NULL,
-  `usuario` int(11) NOT NULL,
-  CONSTRAINT pk_usuarios PRIMARY KEY(NumeroProceso)
-
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
--- --------------------------------------------------------
 
 --
 -- Table structure for table `usuarios`
@@ -47,3 +31,19 @@ CREATE TABLE `usuarios` (
 INSERT INTO `usuarios` (`idusuario`, `apellido1`, `apellido2`, `nombre`, `usuario`, `clave`, `tipo`, `estado`, `fecharegistro`) VALUES
 (1, 'Garcia', 'Forero', 'felipe', 'admin', '123456', 1, 1, '2018-07-08 10:02:42');
 
+--
+-- Table structure for table `procesos`
+--
+
+CREATE TABLE `procesos` (
+  `NumeroProceso` int(11)  auto_increment  NOT NULL,
+  `Descripcion` varchar(200) NOT NULL,
+  `fcreacion` date NOT NULL,
+  `sede` int(11) NOT NULL,
+  `presupuesto` int(11) NOT NULL,
+  `usuario` int(11) NOT NULL,
+  CONSTRAINT pk_usuarios PRIMARY KEY(NumeroProceso),
+  FOREIGN KEY (usuario) REFERENCES  usuarios (idusuario)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
