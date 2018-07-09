@@ -108,7 +108,7 @@ class usuarioDao {
     }
 
     function  registrarprocesoDao($Numeroproceso, $Descripcion, $Fechacreacion, $Sede, $Presupuesto){
-        $usuario = $_SESSION['idusuario'];
+        $usuario = 1;
         $datosArray=array($usuario);
         $st=  procesaParametros::PrepareStatement(usuariosSql::validateIfExistsUser(),$datosArray);
   

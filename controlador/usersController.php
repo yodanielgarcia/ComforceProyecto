@@ -93,10 +93,10 @@ switch ($_POST['action']) {
         break;
 
     case 'deleteproc':
-        $usuario = $_POST['id'];
+        $Numeroproceso = $_POST['id'];
 
         $bo = new usuarioBo();
-        $r = $bo->eliminarProcesoBo($usuario);
+        $r = $bo->eliminarProcesoBo($Numeroproceso);
         print $r;
         break;
 

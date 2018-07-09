@@ -141,7 +141,7 @@ function upProceso() {
 function delPROCESO(user) {
     if (confirm('¿Seguro que desea eliminar este proceso?')) {
         $("#mensaje-delete1").html("");
-        var id = user;
+        var id = user.id;
         var datos = "action=deleteproc&id=" + id;
         $.post("../controlador/usersController.php", datos, function(data) {
             $('#mensaje-delete1').prepend(data);
