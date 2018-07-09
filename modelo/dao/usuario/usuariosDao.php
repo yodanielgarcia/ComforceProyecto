@@ -205,7 +205,7 @@ class usuarioDao {
                 "paterno":"'.$row['Descripcion'].'",
                 "materno":"'.$row['fcreacion'].'",
                 "nombre":"'.$row['sede'].'",
-                "usuario":"'.$row['presupuesto'].'",
+                "usuario":"'.'$'.$row['presupuesto'].'",
                 "acciones":"'.$editar.$eliminar.'"
               },';
       }

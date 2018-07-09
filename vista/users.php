@@ -113,7 +113,6 @@ require_once "../controlador/sessionUserTypeAdmin.php";
                                     <div class="form-group" id="campoTipo">
                                         <select class="form-control" id="tipo" name="tipo">
                                             <option value="2">Cliente 1</option>
-                                            <option value="3">Cliente 2</option>
                                             <option value="1">Administrador</option>                                       
                                         </select>                                    
                                     </div>

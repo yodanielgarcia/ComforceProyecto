@@ -2,6 +2,7 @@
 require_once "../controlador/sessionValidate.php";
 require_once "../controlador/sessionUserTypeAdmin.php";
 
+$hoy= date("d,m,Y"); 
 $valorProceso =1;
 $valorProceso1 =100;
 $valorProceso = mt_rand ($valorProceso , $valorProceso1);
@@ -83,13 +84,13 @@ $valorProceso = mt_rand ($valorProceso , $valorProceso1);
                                 <div class="col-lg-4">
                                     <div class="form-group" id="campoDescripcion">
                                         <label class="control-label" for="Descripcion">Descripción</label>
-                                        <input type="text" class="form-control" id="Descripcion" name="Descripcion" autofocus>
+                                        <input type="text" class="form-control" id="Descripcion" name="Descripcion" autofocus maxlength="200">
                                     </div>
                                 </div>
                                 <div class="col-lg-4">
                                     <div class="form-group" id="campoFechacreacion">
                                         <label class="control-label" for="nombre">Fecha creación</label>
-                                        <input type="date" class="form-control" id="Fechacreacion" name="Fechacreacion">
+                                        <input type="date" class="form-control" id="Fechacreacion" name="Fechacreacion" value="<?=$hoy?>">
                                     </div>
                                 </div>
                                 <div class="col-lg-6">
@@ -105,7 +106,7 @@ $valorProceso = mt_rand ($valorProceso , $valorProceso1);
                                 <div class="col-lg-6">
                                     <div class="form-group" id="campoPresupuesto">
                                         <label class="control-label" for="Presupuesto">Presupuesto</label>
-                                        <input type="text" class="form-control" id="Presupuesto" name="Presupuesto">                                 
+                                        <input type="number" step="0.05" class="form-control" id="Presupuesto" name="Presupuesto">                                 
                                     </div>
                                 </div>                            
                                 <div class="col-lg-4 col-lg-offset-8">
