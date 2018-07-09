@@ -27,7 +27,7 @@ $valorProceso = mt_rand ($valorProceso , $valorProceso1);
         </div>
     </div>
     <div class="row">            
-        <div id="mensaje-delete"></div>            
+        <div id="mensaje-delete1"></div>            
         <h1>Procesos                
             <a href="" data-toggle="modal" data-target="#myModal1"  class="btn btn-success pull-right menu"><i class="fa fa-user-plus " aria-hidden="true"></i>&nbsp;Nuevo proceso</a>
         </h1>  
@@ -41,7 +41,7 @@ $valorProceso = mt_rand ($valorProceso , $valorProceso1);
             <th>Fecha creación</th>
             <th>Sede</th>               
             <th>Presupuesto</th>
-            
+            <th>Acciones</th>
         </tr>
         </thead>
         <tbody>
@@ -53,7 +53,7 @@ $valorProceso = mt_rand ($valorProceso , $valorProceso1);
             <th>Fecha creación</th>
             <th>Sede</th>               
             <th>Presupuesto</th>
-
+            <th>Acciones</th>
         </tr>
         </tfoot>
     </table>        
@@ -89,16 +89,16 @@ $valorProceso = mt_rand ($valorProceso , $valorProceso1);
                                 <div class="col-lg-4">
                                     <div class="form-group" id="campoFechacreacion">
                                         <label class="control-label" for="nombre">Fecha creación</label>
-                                        <input type="text" class="form-control" id="Fechacreacion" name="Fechacreacion">
+                                        <input type="date" class="form-control" id="Fechacreacion" name="Fechacreacion">
                                     </div>
                                 </div>
                                 <div class="col-lg-6">
                                     <div class="form-group" id="campoSede">
                                         <label class="control-label" for="Sede">Sede</label>
                                         <select class="form-control" id="Sede" name="Sede">
-                                            <option value="2">Cliente 1</option>
-                                            <option value="3">Cliente 2</option>
-                                            <option value="1">Administrador</option>                                       
+                                            <option value="2">Bogotá</option>
+                                            <option value="3">México</option>
+                                            <option value="1">Peru</option>                                       
                                         </select>                                    
                                     </div>
                                 </div> 
@@ -124,11 +124,33 @@ $valorProceso = mt_rand ($valorProceso , $valorProceso1);
      </div>
      <!-- END MODAL REGISTER -->
 
+       <!-- MODAL UPDATE -->
+    <div class="modal fade in" id="myModalActualizaPROCESO" >
+        <div class="modal-dialog" style="width:50%;">
+            <div class="modal-content" >
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title"><b></b>Actualizar usuario</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="row-fluid" id="mensaje1"></div>
+                    <form id="formactualizarprocess">
+                    <div id="contenido-updateprocesso"></div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- END MODAL UPDATE -->
+
       <!--Javascript-->    
     <script src="assets/js/jquery.js"></script>
     <script src="assets/js/jquery.dataTables.min.js"></script>
     <script src="assets/js/dataTables.bootstrap.min.js"></script>          
     <script src="assets/js/bootstrap.js"></script>
     <script src="assets/js/procesojs.js"></script>
+    <script src="assets/js/usuariojs.js"></script>
     </body>
 </html>

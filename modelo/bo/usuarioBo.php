@@ -20,6 +20,11 @@ class usuarioBo {
         return $resultado;
     }
 
+    function registrarprocesoBo($Numeroproceso, $Descripcion, $Fechacreacion, $Sede, $Presupuesto) {
+        $resultado = $this->dao->registrarprocesoDao($Numeroproceso, $Descripcion, $Fechacreacion, $Sede, $Presupuesto);
+        return $resultado;
+    }
+
     function traeUsuariosBo(){
         $resultado = $this->dao->traeUsuariosDao();
         return $resultado;
@@ -35,13 +40,28 @@ class usuarioBo {
         return $resultado;
     }
 
+    function actualizarprocesoBo($usuario) {
+        $resultado = $this->dao->actualizarProcesoDao($usuario);
+        return $resultado;
+    }
+
     function saveDataUsuarioBo($id, $apaterno, $amaterno, $nombre, $usuario, $clave, $tipo, $status) {
         $resultado = $this->dao->saveDataUsuarioDao($id, $apaterno, $amaterno, $nombre, $usuario, $clave, $tipo, $status);
         return $resultado;
     }
 
+    function saveDataprocesoBo($Numeroproceso, $Descripcion, $Fechacreacion, $Sede, $presupuesto) {
+        $resultado = $this->dao->saveDataprocesoDao($Numeroproceso, $Descripcion, $Fechacreacion, $Sede, $presupuesto);
+        return $resultado;
+    }
+
     function eliminarUsuarioBo($usuario) {
         $resultado = $this->dao->eliminarUsuarioDao($usuario);
+        return $resultado;
+    }
+
+    function eliminarProcesoBo($usuario) {
+        $resultado = $this->dao->eliminarProcesoDao($usuario);
         return $resultado;
     }
 

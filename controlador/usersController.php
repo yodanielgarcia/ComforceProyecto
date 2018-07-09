@@ -27,6 +27,20 @@ switch ($_POST['action']) {
     print $r;
     break; 
 
+    case 'insertprocess':
+    $Numeroproceso      = $_POST['Numeroproceso'];
+    $Descripcion        = $_POST['Descripcion'];
+    $Fechacreacion      = $_POST['Fechacreacion'];
+    $Sede               = $_POST['Sede'];
+    $Presupuesto        = $_POST['Presupuesto'];
+    
+
+    $bo = new usuarioBo();
+    $r = $bo->registrarprocesoBo($Numeroproceso, $Descripcion, $Fechacreacion, $Sede, $Presupuesto);
+    print $r;
+    break; 
+
+
     case 'update':
          $usuario = $_POST['id'];
 
@@ -35,6 +49,14 @@ switch ($_POST['action']) {
          print $r;
          break; 
 
+    case 'updateProceso':
+         $usuario = $_POST['id'];
+
+         $bo = new usuarioBo();
+         $r = $bo->actualizarprocesoBo($usuario);
+         print $r;
+         break;  
+             
     case 'savedata':
         $id        = $_POST['a']; 
         $apaterno  = $_POST['b'];
@@ -50,6 +72,18 @@ switch ($_POST['action']) {
         print $r;
         break;
 
+    case 'savedataprocess':
+        $Numeroproceso        = $_POST['Numeroproceso1']; 
+        $Descripcion          = $_POST['Descripcion1'];
+        $Fechacreacion        = $_POST['Fechacreacion1'];
+        $Sede                 = $_POST['Sede1'];
+        $presupuesto          = $_POST['Presupuesto1'];
+
+        $bo = new usuarioBo();
+        $r = $bo->saveDataprocesoBo($Numeroproceso, $Descripcion, $Fechacreacion, $Sede, $presupuesto);
+        print $r;
+        break;
+
     case 'delete':
         $usuario = $_POST['id'];
 
@@ -57,6 +91,15 @@ switch ($_POST['action']) {
         $r = $bo->eliminarUsuarioBo($usuario);
         print $r;
         break;
+
+    case 'deleteproc':
+        $usuario = $_POST['id'];
+
+        $bo = new usuarioBo();
+        $r = $bo->eliminarProcesoBo($usuario);
+        print $r;
+        break;
+
     case 'select':
         $bo = new usuarioBo();
         $r = $bo->traeUsuariosBo();

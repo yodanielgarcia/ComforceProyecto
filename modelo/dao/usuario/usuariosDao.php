@@ -107,6 +107,29 @@ class usuarioDao {
       return $result;
     }
 
+    function  registrarprocesoDao($Numeroproceso, $Descripcion, $Fechacreacion, $Sede, $Presupuesto){
+        $usuario = $_SESSION['idusuario'];
+        $datosArray=array($usuario);
+        $st=  procesaParametros::PrepareStatement(usuariosSql::validateIfExistsUser(),$datosArray);
+  
+        $query=$this->con->query($st);
+  
+        if($query->num_rows==0)
+        {
+          $st = "INSERT INTO procesos (NumeroProceso, Descripcion, fcreacion, sede, presupuesto, usuario)
+          VALUES('$Numeroproceso', '$Descripcion', '$Fechacreacion', '$Sede', '$Presupuesto', '$usuario')";
+  
+          $query = $this->con->query($st); 
+          $result = Notification::registeredRecord($query);
+  
+        } 
+        else
+        {
+          $result = Notification::existsUser();
+        }
+        return $result;
+      }
+
     function saveDataUsuarioDao($id, $apaterno, $amaterno, $nombre, $usuario, $clave, $tipo, $status) {
       $st = "UPDATE usuarios SET apellido1='$apaterno', apellido2='$amaterno', nombre='$nombre', usuario='$usuario', clave='$clave', tipo='$tipo', estado='$status' WHERE idUsuario = '$id'";
       $query = $this->con->query($st); 
@@ -114,12 +137,26 @@ class usuarioDao {
       return $result;
     }
 
+    function saveDataprocesoDao($Numeroproceso, $Descripcion, $Fechacreacion, $Sede, $presupuesto) {
+        $st = "UPDATE procesos SET NumeroProceso = '$Numeroproceso', Descripcion = '$Descripcion', fcreacion = '$Fechacreacion', sede = '$Sede', presupuesto = '$presupuesto', usuario = '1' WHERE NumeroProceso = '$Numeroproceso'";
+        $query = $this->con->query($st); 
+        $result = Notification::updatedRecord($query);
+        return $result;
+      }
+
     function eliminarUsuarioDao($usuario) {
       $st = "DELETE FROM usuarios WHERE usuario='$usuario'";
       $query = $this->con->query($st); 
       $result = Notification::deletedRecord($query);
        return $result;
     }
+
+    function eliminarProcesoDao($usuario) {
+        $st = "DELETE FROM procesos WHERE NumeroProceso='$usuario'";
+        $query = $this->con->query($st); 
+        $result = Notification::deletedRecord($query);
+         return $result;
+      }
 
     function traeUsuariosDao() {
 
@@ -160,15 +197,16 @@ class usuarioDao {
   
         while ($row =  mysqli_fetch_array($query) ) {
         
-        $editar = '<a href=\"#\" data-toggle=\"modal\" data-target=\"#myModalActualiza\" id=\"'.$row['NumeroProceso'].'\" onclick=\"traeDatosUsuarioId(this)\" data-toggle=\"tooltip\" data-placement=\"top\" title=\"Editar\" class=\"btn btn-primary\"><i class=\"fa fa-pencil\" aria-hidden=\"true\"></i></a>';
-        $eliminar = '<a href=\"#\" data-toggle=\"tooltip\" data-placement=\"top\" title=\"Eliminar\" id=\"'.$row['NumeroProceso'].'\" onclick=\"delUsuario(this)\" class=\"btn btn-danger\"><i class=\"fa fa-trash\" aria-hidden=\"true\"></i></a>';
+        $editar = '<a href=\"#\" data-toggle=\"modal\" data-target=\"#myModalActualizaPROCESO\" id=\"'.$row['NumeroProceso'].'\" onclick=\"traeDatosPROCESOId(this)\" data-toggle=\"tooltip\" data-placement=\"top\" title=\"Editar\" class=\"btn btn-primary\"><i class=\"fa fa-pencil\" aria-hidden=\"true\"></i></a>';
+        $eliminar = '<a href=\"#\" data-toggle=\"tooltip\" data-placement=\"top\" title=\"Eliminar\" id=\"'.$row['NumeroProceso'].'\" onclick=\"delPROCESO(this)\" class=\"btn btn-danger\"><i class=\"fa fa-trash\" aria-hidden=\"true\"></i></a>';
           
           $data.='{
                 "id":"'.$row['NumeroProceso'].'",
                 "paterno":"'.$row['Descripcion'].'",
                 "materno":"'.$row['fcreacion'].'",
                 "nombre":"'.$row['sede'].'",
-                "usuario":"'.$row['presupuesto'].'"
+                "usuario":"'.$row['presupuesto'].'",
+                "acciones":"'.$editar.$eliminar.'"
               },';
       }
           $data = substr($data,0, strlen($data) - 1);
@@ -250,5 +288,67 @@ class usuarioDao {
     }
     return $cad;
     }
+
+
+
+    function actualizarProcesoDao($usuario) {
+        $cad = "";
+        $st = "SELECT * FROM procesos WHERE NumeroProceso = '$usuario'";
+  
+        $query= $this->con->query($st); 
+  
+        while ($row =  mysqli_fetch_array($query) ) {
+  
+          $cad = '
+              <fieldset>
+              <div class="form-group">                            
+              <div class="col-lg-4">
+                  <div class="form-group" id="campoNumeroproceso">
+                      <label class="control-label" for="Numeroproceso">Numero proceso</label>
+                      <input type="text" class="form-control" id="Numeroproceso" name="Numeroproceso1"  value="'.$row['NumeroProceso'].'" readonly>
+                  </div>
+              </div>
+              <div class="col-lg-4">
+                  <div class="form-group" id="campoDescripcion">
+                      <label class="control-label" for="Descripcion">Descripción</label>
+                      <input type="text" class="form-control" id="Descripcion" name="Descripcion1" value="'.$row['Descripcion'].'" autofocus>
+                  </div>
+              </div>
+              <div class="col-lg-4">
+                  <div class="form-group" id="campoFechacreacion">
+                      <label class="control-label" for="nombre">Fecha creación</label>
+                      <input type="date" class="form-control" id="Fechacreacion" name="Fechacreacion1"  value="'.$row['fcreacion'].'">
+                  </div>
+              </div>
+              <div class="col-lg-6">
+                  <div class="form-group" id="campoSede">
+                      <label class="control-label" for="Sede">Sede</label>
+                      <select class="form-control" id="Sede" name="Sede1">
+                      <option selected value="'.$row['sede'].'">--Click para cambiar--</option>
+                          <option value="2">Bogotá</option>
+                          <option value="3">México</option>
+                          <option value="1">Peru</option>                                       
+                      </select>                                    
+                  </div>
+              </div> 
+              <div class="col-lg-6">
+                  <div class="form-group" id="campoPresupuesto">
+                      <label class="control-label" for="Presupuesto">Presupuesto</label>
+                      <input type="text" class="form-control" id="Presupuesto" name="Presupuesto1" value="'.$row['presupuesto'].'">                                 
+                  </div>
+              </div>                            
+            </div>                            
+                      <div class="col-lg-4 col-lg-offset-8">
+                          <div class="form-group">
+                                <a href="#" class="btn btn-primary btn-block" onclick="upProceso()">Actualizar</a>
+                          </div>
+                      </div>
+                  </div>   
+              </fieldset>
+          ';
+  
+      }
+      return $cad;
+      }
 }
 ?>
